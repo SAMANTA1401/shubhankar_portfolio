@@ -1,0 +1,83 @@
+{% extends "base.html" %} 
+{% block title %}signup{% endblock title %} 
+{% block stylecss %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+{% endblock stylecss %} 
+{% block body %}
+<div class="container mt-4 p-2">
+  <div class="row" id="logrow" style="padding-top: 160px">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %}
+      <div class="card p-2" id="myform">
+        <h3 class="text-white bg-dark text-center p-3 form-control">
+          Sign Up Here!
+        </h3>
+
+        <form action="/auth/signup/" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <h4>
+              <span
+                ><i class="fa fa-envelope" aria-hidden="true"></i> Email</span
+              >
+            </h4>
+            <input
+              type="email"
+              class="form-control mb-3"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <h4>
+              <span><i class="fa fa-key" aria-hidden="true"></i> password</span>
+            </h4>
+            <input
+              type="password"
+              class="form-control mb-3"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <h4>
+              <span
+                ><i class="fa fa-lock" aria-hidden="true"></i> confirm
+                password</span
+              >
+            </h4>
+            <input
+              type="password"
+              class="form-control mb-3"
+              name="cpassword"
+              required
+            />
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-dark" type="submit">SignUp</button>
+          </div>
+          <div class="p-1">Already User ? <a href="/auth/login">LogIn</a></div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+{% endblock body %}

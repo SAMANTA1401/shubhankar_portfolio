@@ -1,0 +1,51 @@
+{% extends "base.html" %} 
+{% block title %}blog{% endblock title %} 
+{% block stylecss %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+{% endblock stylecss %} 
+{% block body %} 
+{% load static %}
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Blogs</h2>
+      <p>
+        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
+        aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
+        quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+        sit in iste officiis commodi quidem hic quas.
+      </p>
+    </div>
+
+    <div class="row">
+      {% for post in posts reversed %}
+      <div
+        class="col-lg-4 col-md-6 icon-box"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div class="col-lg-4" data-aos="fade-right">
+            <img src="{{post.img.url}}" class="img-fluid" alt="">
+        </div>
+        <br>
+        <div class="icon"><i class="bi bi-briefcase"></i></div>
+        <h2 class="title"><a href="">{{post.title}}</a></h2>
+
+        <p class="description">{{post.description}}</p>
+        <p>Posted by: <b>{{post.authname}}</b></p>
+        <p>Posted on: <b>{{post.date}}</b></p>
+        {% comment %} 6:16:18 {% endcomment %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- End Services Section -->
+
+{% endblock body %}
