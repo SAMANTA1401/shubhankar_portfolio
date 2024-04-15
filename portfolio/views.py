@@ -28,4 +28,10 @@ def blog(request):
     posts = Blogs.objects.all()
     context = {'posts':posts}
     return render(request, 'handleblog.html', context=context)
-# 6:11:4
+
+
+def resume(request):
+    return render(request, 'resume.html')
+
+def portfolio(request):
+    return render(request, 'portfolio.html')
