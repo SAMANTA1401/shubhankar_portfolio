@@ -14,7 +14,7 @@ COPY templates /app
 COPY manage.py /app
 
 RUN apt-get update 
-RUN apt-get install -y python3 
+
 RUN apt-get install python3-venv
 RUN python3 -m venv .venv
 RUN source .venv/bin/activate
