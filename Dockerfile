@@ -15,7 +15,7 @@ COPY manage.py /app
 
 RUN apt-get update 
 
-RUN apt-get install python3-venv
+RUN apt-get -y install python3-venv 
 RUN python3 -m venv .venv
 RUN source .venv/bin/activate
 RUN pip install -r requirements.txt  
